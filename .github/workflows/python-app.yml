@@ -29,6 +29,7 @@ jobs:
         cache: pip
 
     - name: Install dependencies
+      shell: bash   # forces bash even on Windows
       run: |
         python -m pip install --upgrade pip
         pip install flake8
@@ -41,7 +42,7 @@ jobs:
 
 
   test:
-    needs: build   # waits for build to finish
+    needs: build # wwait for build to finish
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -60,6 +61,7 @@ jobs:
         cache: pip
 
     - name: Install dependencies
+      shell: bash   
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
