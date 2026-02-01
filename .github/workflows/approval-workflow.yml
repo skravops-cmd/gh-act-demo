@@ -5,3 +5,11 @@ on: pull_request_review
 jobs:
   labelWhenApproved:
     runs-on: ubuntu-latest
+    steps:
+      - name: label-approved-action
+        uses: AnandChowdhary/label-approved-action@v1.0.0
+        with:
+          labels: "approved"
+          approvals: 1
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
